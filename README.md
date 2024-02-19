@@ -16,7 +16,7 @@ No resources are provided, but you'll want to have the following in your resourc
 If you're working on a certain established project about a space station, you'll already have these files in the VFS and you can ignore these.
 
 ## Usage
-This control set is designed to be used in place of the engine builtins, so it is recommended that you use the `https://afterlight3149.net`. Controls can be used as standard RTUI controls.
+This control set is designed to be used in place of the engine builtins, so it is recommended that you use the `https://afterlight3149.net` xml namespace. Controls can be used as standard RTUI controls.
 Documentation is heavily TODO, apologies!
 
 ## Showcase
