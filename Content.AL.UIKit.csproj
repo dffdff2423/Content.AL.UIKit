@@ -20,5 +20,20 @@
         <ProjectReference Include="..\RobustToolbox\Robust.Client\Robust.Client.csproj" />
         <ProjectReference Include="..\Content.Shared\Content.Shared.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <None Remove="LICENSE" />
+      <None Remove="README.md" />
+      <None Remove="img.png" />
+      <None Remove="readme_assets\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="readme_assets\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="readme_assets\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <AdditionalFiles Remove="readme_assets\**" />
+    </ItemGroup>
     <Import Project="..\RobustToolbox\MSBuild\XamlIL.targets" />
 </Project>
