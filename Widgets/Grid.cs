@@ -5,6 +5,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class Grid : GridContainer
 {
@@ -14,6 +15,7 @@ public class Grid : GridContainer
     }
 }
 
+[PublicAPI]
 [Virtual]
 public class GrowGrid : Grid
 {

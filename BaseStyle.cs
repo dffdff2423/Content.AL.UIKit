@@ -6,6 +6,7 @@ using System.Linq;
 using Content.AL.UIKit.Sheets;
 using Content.AL.UIKit.Styleboxes;
 using Content.AL.UIKit.Widgets;
+using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
@@ -18,6 +19,7 @@ using static Content.AL.UIKit.ALStylesheetHelpers;
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public abstract class BaseStyle
 {
     [Dependency] public readonly IUserInterfaceManager UserInterface = default!;
@@ -53,9 +55,9 @@ public abstract class BaseStyle
 
     #region Fonts
     public virtual int BaseFontSize => 12;
-    public virtual FontStack Font => Fonts.NotoSans;
-    public virtual FontStack DisplayFont => Fonts.NotoSansDisplay;
-    public virtual FontStack MonoFont => Fonts.NotoMono;
+    public virtual FontStack Font => DefaultFonts.NotoSans;
+    public virtual FontStack DisplayFont => DefaultFonts.NotoSansDisplay;
+    public virtual FontStack MonoFont => DefaultFonts.NotoMono;
     #endregion
 
     public StyleRule[] BaseRules { get; }
@@ -81,19 +83,19 @@ public abstract class BaseStyle
 
         BaseRules = new StyleRule[]
         {
-            Element().Prop(Style.BackgroundPanelStyleboxes, PanelBackgrounds),
-            Element().Prop(Style.PrimaryPalette, PrimaryPalette),
-            Element().Prop(Style.SecondaryPalette, SecondaryPalette),
+            Element().Prop(ALStyleConsts.BackgroundPanelStyleboxes, PanelBackgrounds),
+            Element().Prop(ALStyleConsts.PrimaryPalette, PrimaryPalette),
+            Element().Prop(ALStyleConsts.SecondaryPalette, SecondaryPalette),
 
             /* TEXT AND FONTS */
-            Element().Prop(Style.Font, Font.GetFont(BaseFontSize)),
-            Element().Class(Style.Bold)
-                .Prop(Style.Font, Font.GetFont(BaseFontSize, FontStack.FontKind.Bold)),
-            Element().Prop(Style.FontColor, SecondaryPalette[0]),
+            Element().Prop(ALStyleConsts.Font, Font.GetFont(BaseFontSize)),
+            Element().Class(ALStyleConsts.Bold)
+                .Prop(ALStyleConsts.Font, Font.GetFont(BaseFontSize, FontStack.FontKind.Bold)),
+            Element().Prop(ALStyleConsts.FontColor, SecondaryPalette[0]),
 
 
             /* Horizontal and vertical bars */
-            E<HBar>().Prop(Style.StyleBox, SecondarySolidBackgrounds[0]),
+            E<HBar>().Prop(ALStyleConsts.StyleBox, SecondarySolidBackgrounds[0]),
 
             /* Sliders */
             E<Slider>()

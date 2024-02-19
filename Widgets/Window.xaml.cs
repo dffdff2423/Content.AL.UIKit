@@ -10,6 +10,7 @@ using Robust.Client.UserInterface.XAML;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 [GenerateTypedNameReferences]
 public partial class Window : BaseWindow, IDepthMeasure<BorderedPanel>

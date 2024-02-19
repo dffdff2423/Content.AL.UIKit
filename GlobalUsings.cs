@@ -5,3 +5,4 @@ global using Robust.Shared.Maths;
 global using Robust.Shared.Localization;
 global using Robust.Shared.ViewVariables;
 global using Robust.Shared.Analyzers;
+global using JetBrains.Annotations;

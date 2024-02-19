@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public sealed class ElementSet : Container
 {
     public Control CurrentElement { get; private set; } = default!;

@@ -12,7 +12,7 @@ using static Content.AL.UIKit.ALStylesheetHelpers;
 namespace Content.AL.UIKit.Widgets;
 
 [Stylesheet]
-public sealed class WindowStylesheet : BaseSubsheet
+internal sealed class WindowStylesheet : BaseSubsheet
 {
     public override StyleRule[] GetRules(BaseStyle origin)
     {
@@ -20,8 +20,8 @@ public sealed class WindowStylesheet : BaseSubsheet
             origin.LoadIndefiniteNinePatchSet($"{origin.FileRoot}/window_cross_{{0}}.png", 0);
         return new StyleRule[]
         {
-            Element().Class(Style.WindowBackground).Prop(PanelContainer.StylePropertyPanel, origin.PanelBackgrounds[0]),
-            Element().Class(Style.WindowContentsBackground).Prop(PanelContainer.StylePropertyPanel, origin.PanelBackgrounds[0]),
+            Element().Class(ALStyleConsts.WindowBackground).Prop(PanelContainer.StylePropertyPanel, origin.PanelBackgrounds[0]),
+            Element().Class(ALStyleConsts.WindowContentsBackground).Prop(PanelContainer.StylePropertyPanel, origin.PanelBackgrounds[0]),
             E<TextureButton>().Class(DefaultWindow.StyleClassWindowCloseButton).ParentOf(E<TextureRect>())
                 .Prop(TextureRect.StylePropertyTexture, WindowTextures[2])
                 .Prop(TextureRect.StylePropertyTextureSizeTarget, new Vector2(32, 32)),

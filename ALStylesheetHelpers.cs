@@ -41,12 +41,12 @@ public static class ALStylesheetHelpers
 
     public static MutableSelectorElement Positive(this MutableSelectorElement i)
     {
-        return i.Class(Style.Positive);
+        return i.Class(ALStyleConsts.Positive);
     }
 
     public static MutableSelectorElement Negative(this MutableSelectorElement i)
     {
-        return i.Class(Style.Negative);
+        return i.Class(ALStyleConsts.Negative);
     }
 
     public static MutableSelectorElement Normal(this MutableSelectorElement i)

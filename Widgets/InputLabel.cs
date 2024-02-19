@@ -7,19 +7,20 @@ using static Robust.Client.UserInterface.StylesheetHelpers;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class InputLabel : Text
 {
 }
 
 [Stylesheet]
-public sealed class InputLabelStyle : BaseSubsheet
+internal sealed class InputLabelStyle : BaseSubsheet
 {
     public override StyleRule[] GetRules(BaseStyle origin)
     {
         return new StyleRule[]
         {
-            Element<InputLabel>().Prop(Style.Font,
+            Element<InputLabel>().Prop(ALStyleConsts.Font,
                 origin.Font.GetFont(origin.BaseFontSize, FontStack.FontKind.Bold))
         };
     }

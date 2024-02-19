@@ -7,6 +7,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public sealed class RadioGroup : Control, IGroupOrganizer
 {
     public Dictionary<string, ButtonGroup> Groups { get; } = new();

@@ -6,6 +6,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public abstract class Scrollable : ScrollContainer
 {
     protected Scrollable()

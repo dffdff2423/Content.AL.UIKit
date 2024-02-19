@@ -5,6 +5,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class Text : Label
 {

@@ -8,6 +8,7 @@ using Robust.Shared.Timing;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [GenerateTypedNameReferences]
 public sealed partial class Keypad : GridContainer
 {

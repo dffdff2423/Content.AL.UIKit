@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class BorderedPanel : PanelContainer, IDepthMeasure<BorderedPanel>, IBrightnessAware
 {
@@ -36,7 +37,7 @@ public class BorderedPanel : PanelContainer, IDepthMeasure<BorderedPanel>, IBrig
 
     public virtual void OnDepthUpdate(int n)
     {
-        if (TryGetStyleProperty(Style.BackgroundPanelStyleboxes, out StyleBox[]? boxes))
+        if (TryGetStyleProperty(ALStyleConsts.BackgroundPanelStyleboxes, out StyleBox[]? boxes))
         {
             if (boxes is null)
                 return;

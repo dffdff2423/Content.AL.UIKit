@@ -3,6 +3,7 @@
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public sealed class RadioLabelButton : Button
 {
     public RadioLabelButton()

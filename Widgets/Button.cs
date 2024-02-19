@@ -8,6 +8,8 @@ using Robust.Shared.Localization;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
+[Virtual]
 public class Button : ContainerButton
 {
     [Dependency] private ILocalizationManager _localization = default!;

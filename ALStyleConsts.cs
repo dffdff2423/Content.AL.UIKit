@@ -3,7 +3,10 @@
 
 namespace Content.AL.UIKit;
 
-public static class Style
+[PublicAPI]
+// ReSharper disable once IdentifierTypo
+// ReSharper disable once InconsistentNaming
+public static class ALStyleConsts
 {
     public const string StyleBox = "stylebox";
     public const string ModulateSelf = "modulate-self";

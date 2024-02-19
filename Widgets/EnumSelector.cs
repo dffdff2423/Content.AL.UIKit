@@ -12,6 +12,7 @@ using static Robust.Client.UserInterface.StylesheetHelpers;
 namespace Content.AL.UIKit.Widgets;
 
 // TODO: Replace OptionButton with our own version, so we can stylize it like a drawer.
+[PublicAPI]
 [Virtual]
 public class EnumSelector : OptionButton
 {
@@ -24,7 +25,7 @@ public class EnumSelector : OptionButton
         // TODO: Figure out how to calculate the minimum width of the control based on the selectable items.
         //HorizontalExpand = false;
         Margin = new Thickness(2);
-        OptionStyleClasses.Add(Style.EnumSelectorOptionClass);
+        OptionStyleClasses.Add(ALStyleConsts.EnumSelectorOptionClass);
     }
 
     public Enum Selected => (Enum) SelectedMetadata!;
@@ -81,14 +82,14 @@ public sealed class EnumSelectorSheet : BaseSubsheet
     {
         return new StyleRule[]
         {
-            Element().Class(Style.EnumSelectorOptionClass).Normal()
-                .Prop(Style.StyleBox, origin.ButtonBackgrounds[2]),
-            Element().Class(Style.EnumSelectorOptionClass).Hover()
-                .Prop(Style.StyleBox, origin.ButtonBackgrounds[2]),
-            Element().Class(Style.EnumSelectorOptionClass).Pressed()
-                .Prop(Style.StyleBox, origin.ButtonBackgrounds[2]),
-            Element().Class(Style.EnumSelectorOptionClass).Disabled()
-                .Prop(Style.StyleBox, origin.ButtonBackgrounds[2]),
+            Element().Class(ALStyleConsts.EnumSelectorOptionClass).Normal()
+                .Prop(ALStyleConsts.StyleBox, origin.ButtonBackgrounds[2]),
+            Element().Class(ALStyleConsts.EnumSelectorOptionClass).Hover()
+                .Prop(ALStyleConsts.StyleBox, origin.ButtonBackgrounds[2]),
+            Element().Class(ALStyleConsts.EnumSelectorOptionClass).Pressed()
+                .Prop(ALStyleConsts.StyleBox, origin.ButtonBackgrounds[2]),
+            Element().Class(ALStyleConsts.EnumSelectorOptionClass).Disabled()
+                .Prop(ALStyleConsts.StyleBox, origin.ButtonBackgrounds[2]),
         };
     }
 }

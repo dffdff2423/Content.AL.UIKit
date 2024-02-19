@@ -4,6 +4,7 @@ using Robust.Shared.Utility;
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public static class ResourceCacheExtensions
 {
     public static Texture GetTexture(this IResourceCache cache, ResPath path)

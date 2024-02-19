@@ -7,6 +7,7 @@ using Robust.Shared.Input;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class PinboardDraggableContainer : Container
 {

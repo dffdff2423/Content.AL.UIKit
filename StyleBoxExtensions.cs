@@ -8,6 +8,7 @@ using Robust.Client.Graphics;
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public static class StyleBoxExtensions
 {
     public static float Luminance(this StyleBox? box)

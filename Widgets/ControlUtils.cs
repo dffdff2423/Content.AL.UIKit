@@ -5,6 +5,7 @@ using Robust.Client.UserInterface;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public static class ControlUtils
 {
     public static T? GetImplementingParent<T>(this Control self)

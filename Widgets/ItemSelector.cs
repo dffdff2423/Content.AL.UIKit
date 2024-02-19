@@ -3,6 +3,7 @@
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class ItemSelector : Button
 {

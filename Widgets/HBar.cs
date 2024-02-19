@@ -8,6 +8,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 [Virtual]
 public class HBar : PanelContainer, IDepthMeasure<BorderedPanel>
 {
@@ -41,7 +42,7 @@ public class HBar : PanelContainer, IDepthMeasure<BorderedPanel>
 
     public void OnDepthUpdate(int n)
     {
-        if (TryGetStyleProperty(Style.BarStyleboxes, out StyleBox[]? boxes))
+        if (TryGetStyleProperty(ALStyleConsts.BarStyleboxes, out StyleBox[]? boxes))
         {
             if (boxes is null)
                 return;

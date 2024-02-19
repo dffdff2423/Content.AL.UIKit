@@ -5,6 +5,7 @@ using System.Numerics;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public interface IPinboardAware
 {
     public void PositionUpdated(Vector2 pos);

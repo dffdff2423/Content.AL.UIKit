@@ -5,6 +5,7 @@ using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
 public sealed class InfoBox : BorderedPanel
 {
     public Text Label { get; } = new();
@@ -22,7 +23,7 @@ public sealed class InfoBox : BorderedPanel
 
     public InfoBox()
     {
-        Label.AddStyleClass(Style.Bold);
+        Label.AddStyleClass(ALStyleConsts.Bold);
         Label.HorizontalAlignment = HAlignment.Center;
         Label.HorizontalExpand = true;
         AddChild(Inner);

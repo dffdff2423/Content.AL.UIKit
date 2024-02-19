@@ -3,6 +3,7 @@
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public sealed class SingleFont : FontStack
 {
     public override string FontPrimary => throw new NotImplementedException();

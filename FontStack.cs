@@ -1,11 +1,13 @@
 ﻿// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public abstract class FontStack
 {
     [Dependency] private readonly IResourceCache _resourceCache = default!;
@@ -91,6 +93,7 @@ public abstract class FontStack
     }
 }
 
+[PublicAPI]
 public static class FontKindExtensions
 {
     public static string AsFileName(this FontStack.FontKind kind)

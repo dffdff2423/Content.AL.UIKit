@@ -6,6 +6,8 @@ using Robust.Client.Graphics;
 
 namespace Content.AL.UIKit.Widgets;
 
+[PublicAPI]
+[Virtual]
 public class ContainerButton : Robust.Client.UserInterface.Controls.ContainerButton, IBrightnessAware
 {
     protected StyleBox ActualStyleBox

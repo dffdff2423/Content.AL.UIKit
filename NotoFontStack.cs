@@ -3,6 +3,7 @@
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public sealed class NotoFontStack : FontStack
 {
     private string _variant;
@@ -17,6 +18,4 @@ public sealed class NotoFontStack : FontStack
     public override string FontSymbols => "/Fonts/NotoSans/NotoSansSymbols-{1}.ttf";
 
     public override string[] Extra => new[] { "/Fonts/NotoSans/NotoSansSymbols2-Regular.ttf" };
-
-
 }
