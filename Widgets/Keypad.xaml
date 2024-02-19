@@ -1,0 +1,17 @@
+﻿<widgets:Keypad
+    Columns="3"
+        Rows="4"
+    xmlns:widgets="https://afterlight3149.net">
+    <widgets:Button Name="B1" Text="1"/>
+    <widgets:Button Name="B4" Text="4"/>
+    <widgets:Button Name="B7" Text="7"/>
+    <widgets:Button Name="BClr" Text="Clr" StyleClasses="Negative"/>
+    <widgets:Button Name="B2" Text="2"/>
+    <widgets:Button Name="B5" Text="5"/>
+    <widgets:Button Name="B8" Text="8"/>
+    <widgets:Button Name="B0" Text="0"/>
+    <widgets:Button Name="B3" Text="3"/>
+    <widgets:Button Name="B6" Text="6"/>
+    <widgets:Button Name="B9" Text="9"/>
+    <widgets:Button Name="BE" Text="E" StyleClasses="Positive"/>
+</widgets:Keypad>
