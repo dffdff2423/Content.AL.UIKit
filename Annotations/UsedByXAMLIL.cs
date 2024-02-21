@@ -8,6 +8,7 @@ namespace Content.AL.UIKit.Annotations;
 /// This should only be applied to attached property methods.
 /// </summary>
 [MeansImplicitUse]
+[AttributeUsage(AttributeTargets.Method)]
 // ReSharper disable once InconsistentNaming
 internal sealed class UsedByXAMLIL : Attribute
 {

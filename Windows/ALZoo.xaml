@@ -22,6 +22,7 @@
         <rt:Slider Value="25"/>
         <rt:Slider Value="50"/>
         <rt:Slider Value="75"/>
+        <rt:TextureRect Name="TextureR"/>
 
         <BackbufferControl Name="Backbuffer">
             <OrbitalContainer MinSize="300 300" OrbitDistance="100" PlacementMode="Even">
