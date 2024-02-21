@@ -1,6 +1,0 @@
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.csproj.AssemblyReference.cache
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.GeneratedMSBuildEditorConfig.editorconfig
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.AssemblyInfoInputs.cache
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.AssemblyInfo.cs
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.csproj.CoreCompileInputs.cache
-K:\Projects\RTTemplate\Content.AL.UIKit\obj\Debug\Content.AL.UIKit.sourcelink.json

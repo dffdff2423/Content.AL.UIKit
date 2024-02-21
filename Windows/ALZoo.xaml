@@ -23,18 +23,28 @@
         <rt:Slider Value="50"/>
         <rt:Slider Value="75"/>
 
-        <PinboardContainer MinSize="300 300">
-            <VBorderedPanel PinboardContainer.PinLocation="100 100">
-                <Text Text="Pinboard 1"/>
-            </VBorderedPanel>
-            <PinboardDraggableContainer PinboardContainer.PinLocation="200 200">
-                <VBorderedPanel >
-                    <Button Text="Pinboard 2"/>
-                </VBorderedPanel>
-            </PinboardDraggableContainer>
-            <VBorderedPanel>
-                <Text Text="Pinboard 3"/>
-            </VBorderedPanel>
-        </PinboardContainer>
+        <rt:Control>
+            <OrbitalContainer MinSize="300 300" OrbitDistance="100" PlacementMode="Even">
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+            </OrbitalContainer>
+            <OrbitalContainer MinSize="300 300" OrbitDistance="50" PlacementMode="Even">
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+                <Button SetSize="30 30" Margin="12 12"/>
+            </OrbitalContainer>
+            <rt:Control MinSize="300 300">
+                <Button SetSize="30 30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </rt:Control>
+        </rt:Control>
     </VGrowStack>
 </windows:ALZoo>

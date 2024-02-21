@@ -2,18 +2,17 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 using Content.AL.UIKit.Windows;
-using Robust.Shared.Toolshed;
+using Robust.Shared.Console;
 
 namespace Content.AL.UIKit.Commands;
 
-[ToolshedCommand]
-public sealed class OpenZooCommand : ToolshedCommand
+internal sealed class OpenZooCommand : LocalizedCommands
 {
-    [CommandImplementation]
-    public void Open()
-    {
-        var w = new ALZoo();
+    public override string Command => "openzoo";
 
-        w.Open();
+    public override void Execute(IConsoleShell shell, string argStr, string[] args)
+    {
+        var zoo = new ALZoo();
+        zoo.OpenCentered();
     }
 }

@@ -35,23 +35,6 @@ public class PinboardContainer : Container
     public float Zoom { get; set; }= 1.0f;
     public Vector2 ChildAvailableSpace { get; set; } = new(1024, 1024);
 
-    private Animation Zoomies = new Animation()
-    {
-        AnimationTracks =
-        {
-            new AnimationTrackControlProperty()
-            {
-                InterpolationMode = AnimationInterpolationMode.Cubic,
-                KeyFrames =
-                {
-                    new AnimationTrackProperty.KeyFrame(0.2f, 0.0f),
-                    new AnimationTrackProperty.KeyFrame(2.0f, 3.0f),
-                },
-                Property = nameof(PinboardContainer.Zoom)
-            }
-        }
-    };
-
     public bool DoCursorScroll = true;
 
     private bool _dragging = false;
