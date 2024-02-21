@@ -101,14 +101,6 @@ public struct OklabColor
     /// </summary>
     public void SetHueChroma(Angle h, float c)
     {
-        if (h < HueEpsilon)
-        {
-            A = 0;
-            B = 0;
-            // Ignore chroma.
-            return;
-        }
-
         A = c * float.Cos((float)h.Theta);
         B = c * float.Sin((float)h.Theta);
     }

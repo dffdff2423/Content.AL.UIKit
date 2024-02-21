@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 using System.Numerics;
+using Content.AL.UIKit.Annotations;
 using Robust.Client.Animations;
 using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
@@ -18,8 +19,10 @@ public class PinboardContainer : Container
     public static readonly AttachedProperty<Vector2> PinLocation = AttachedProperty<Vector2>.Create("PinLocation", typeof(PinboardContainer), defaultValue: Vector2.Zero);
 
     // XAMLIL magic, these are used to recognize attachedprops from XAML. It will ICE if you remove one without the other, as well. :)
+    [UsedByXAMLIL]
     public static Vector2 GetPinLocation(Control c)
         => c.GetValue(PinLocation);
+    [UsedByXAMLIL]
     public static void SetPinLocation(Control c, Vector2 loc)
     {
         c.SetValue(PinLocation, loc);

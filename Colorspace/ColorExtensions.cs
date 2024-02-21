@@ -13,7 +13,7 @@ public static class ColorExtensions
     /// </summary>
     public static Color WithLightness(this Color c, float lightness)
     {
-        DebugTools.Assert(lightness >= 0.0f && lightness <= 1.0f);
+        DebugTools.Assert(lightness is >= 0.0f and <= 1.0f);
         
         var o = new OklabColor(c)
         {
