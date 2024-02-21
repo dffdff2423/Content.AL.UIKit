@@ -23,7 +23,7 @@
         <rt:Slider Value="50"/>
         <rt:Slider Value="75"/>
 
-        <rt:Control>
+        <BackbufferControl Name="Backbuffer">
             <OrbitalContainer MinSize="300 300" OrbitDistance="100" PlacementMode="Even">
                 <Button SetSize="30 30" Margin="12 12"/>
                 <Button SetSize="30 30" Margin="12 12"/>
@@ -45,6 +45,6 @@
             <rt:Control MinSize="300 300">
                 <Button SetSize="30 30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </rt:Control>
-        </rt:Control>
+        </BackbufferControl>
     </VGrowStack>
 </windows:ALZoo>
