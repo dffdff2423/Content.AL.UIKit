@@ -52,27 +52,22 @@ public class BackbufferControl : Control
     {
         IoCManager.InjectDependencies(this);
     }
-
-    protected override Vector2 MeasureOverride(Vector2 availableSize)
+    
+    protected override Vector2 ArrangeOverride(Vector2 finalSize)
     {
-        var measure = base.MeasureOverride(availableSize);
-        if (measure.X < 4 || measure.Y < 4)
+        if (finalSize.X < 4 || finalSize.Y < 4)
         {
             // Arbitrary "oops we give up" to avoid render target getting mad.
             _target = null;
-            return measure;
         }
-
-        return measure;
-    }
-
-    protected override Vector2 ArrangeOverride(Vector2 finalSize)
-    {
-        _target = Clyde.CreateRenderTarget(
-            (Vector2i) (finalSize * UIScale) * TargetScale,
-            new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8),
-            name: "UI Backbuffer"
-        );
+        else
+        {
+            _target = Clyde.CreateRenderTarget(
+                (Vector2i) (finalSize * UIScale) * TargetScale,
+                new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8),
+                name: "UI Backbuffer"
+            );
+        }
 
         return base.ArrangeOverride(finalSize);
     }
