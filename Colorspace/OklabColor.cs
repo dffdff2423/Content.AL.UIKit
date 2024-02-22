@@ -57,7 +57,10 @@ public struct OklabColor
     /// <summary>
     ///     Oklch hue.
     /// </summary>
-    /// <remarks>This may be NaN or have unpredictable values when length((a,b)) is near zero! Use HNorm to normalize it to zero.</remarks>
+    /// <remarks>
+    /// This may be NaN or have unpredictable values when C is near zero! Use HNorm to normalize it to zero.
+    /// Set Chroma before setting this or you'll get funny behavior.
+    /// </remarks>
     public Angle H
     {
         get => float.Atan2(A, B);
@@ -104,39 +107,50 @@ public struct OklabColor
         A = c * float.Cos((float)h.Theta);
         B = c * float.Sin((float)h.Theta);
     }
-    
+
+    public static OklabColor FromLch(float lightness, Angle hue, float chroma, float alpha = 1.0f)
+    {
+        return new OklabColor
+        {
+            L = lightness,
+            C = chroma,
+            H = hue,
+            Alpha = alpha
+        };
+    }
+
     public OklabColor(Color c)
     {
         // I won't pretend to know how this works.
         // https://bottosson.github.io/posts/oklab/
-        var l = 0.4122214708f * c.R + 0.5363325363f * c.G + 0.0514459929f * c.B;
-        var m = 0.2119034982f * c.R + 0.6806995451f * c.G + 0.1073969566f * c.B;
-        var s = 0.0883024619f * c.R + 0.2817188376f * c.G + 0.6299787005f * c.B;
+        var l = 0.4122214708d * c.R + 0.5363325363d * c.G + 0.0514459929d * c.B;
+        var m = 0.2119034982d * c.R + 0.6806995451d * c.G + 0.1073969566d * c.B;
+        var s = 0.0883024619d * c.R + 0.2817188376d * c.G + 0.6299787005d * c.B;
 
-        var l_ = float.Cbrt(l);
-        var m_ = float.Cbrt(m);
-        var s_ = float.Cbrt(s);
+        var l_ = double.Cbrt(l);
+        var m_ = double.Cbrt(m);
+        var s_ = double.Cbrt(s);
 
-        L = 0.2104542553f * l_ + 0.7936177850f * m_ - 0.0040720468f * s_;
-        A = 1.9779984951f * l_ - 2.4285922050f * m_ + 0.4505937099f * s_;
-        B = 0.0259040371f * l_ + 0.7827717662f * m_ - 0.8086757660f * s_;
+        L = (float)(0.2104542553d * l_ + 0.7936177850d * m_ - 0.0040720468d * s_);
+        A = (float)(1.9779984951d * l_ - 2.4285922050d * m_ + 0.4505937099d * s_);
+        B = (float)(0.0259040371d * l_ + 0.7827717662d * m_ - 0.8086757660d * s_);
         Alpha = c.A;
     }
 
     public static explicit operator Color(OklabColor c)
     {
-        var l_ = c.L + 0.3963377774f * c.A + 0.2158037573f * c.B;
-        var m_ = c.L - 0.1055613458f * c.A - 0.0638541728f * c.B;
-        var s_ = c.L - 0.0894841775f * c.A - 1.2914855480f * c.B;
+        var l_ = c.L + 0.3963377774d * c.A + 0.2158037573d * c.B;
+        var m_ = c.L - 0.1055613458d * c.A - 0.0638541728d * c.B;
+        var s_ = c.L - 0.0894841775d * c.A - 1.2914855480d * c.B;
 
         var l = l_*l_*l_;
         var m = m_*m_*m_;
         var s = s_*s_*s_;
 
         return new(
-            +4.0767416621f * l - 3.3077115913f * m + 0.2309699292f * s,
-            -1.2684380046f * l + 2.6097574011f * m - 0.3413193965f * s,
-            -0.0041960863f * l - 0.7034186147f * m + 1.7076147010f * s,
+            (float)(+4.0767416621d * l - 3.3077115913d * m + 0.2309699292d * s),
+            (float)(-1.2684380046d * l + 2.6097574011d * m - 0.3413193965d * s),
+            (float)(-0.0041960863d * l - 0.7034186147d * m + 1.7076147010d * s),
             c.Alpha
         );
     }
