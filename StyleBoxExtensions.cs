@@ -2,6 +2,7 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 using System.Numerics;
+using Content.AL.UIKit.Colorspace;
 using Content.AL.UIKit.Interfaces;
 using Content.AL.UIKit.Styleboxes;
 using Robust.Client.Graphics;
@@ -16,12 +17,12 @@ public static class StyleBoxExtensions
         switch (box)
         {
             case StyleBoxFlat flat:
-                return Color.ToHsl(flat.BackgroundColor).Z;
+                return new OklabColor(flat.BackgroundColor).L;
             case StyleBoxTexture tex:
             {
                 var texture = tex.Texture!;
                 var pix = texture.GetPixel(texture.Width / 2, texture.Height / 2);
-                return Color.ToHsl(pix).Z;
+                return new OklabColor(pix).L;
             }
             case IBrightnessAware b:
                 return b.Luminance();

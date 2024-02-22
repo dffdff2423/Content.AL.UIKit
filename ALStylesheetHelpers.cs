@@ -35,7 +35,7 @@ public static class ALStylesheetHelpers
 
     public static MutableSelectorElement Button<T>()
     {
-        var e = new MutableSelectorElement() {Type = typeof(T)};
+        var e = new MutableSelectorElement() {Type = typeof(T)}.Class(ContainerButton.StyleClassButton);
         return e;
     }
 

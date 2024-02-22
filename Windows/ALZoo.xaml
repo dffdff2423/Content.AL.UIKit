@@ -2,50 +2,74 @@
         xmlns:rt="https://spacestation14.io"
         xmlns:windows="clr-namespace:Content.AL.UIKit.Windows"
         Title="AL Control Zoo">
-    <VGrowStack>
-        <HStack>
-            <VBorderedPanel VerticalExpand="True">
-                <Text Text="Three!"/>
-                <HStack>
-                    <Button Text="Click me!"/>
-                    <Button Disabled="True" Text="Click me!"/>
-                </HStack>
+    <HGrowStack>
+        <VGrowStack MaxWidth="450">
+            <HStack>
+                <VBorderedPanel VerticalExpand="True">
+                    <Text Text="Three!"/>
+                    <HStack>
+                        <Button Text="Click me!"/>
+                        <Button Disabled="True" Text="Click me!"/>
+                    </HStack>
 
-                <VBorderedPanel>
-                    <InfoBox Header="Info!" MaxWidth="200">
-                        <RichText Text="Something to see here, probably! This is an InfoBox control. For Info. Right?"/>
-                    </InfoBox>
+                    <VBorderedPanel>
+                        <InfoBox Header="Info!" MaxWidth="200">
+                            <RichText Text="Demonstration of background aware text (a11y)"/>
+                        </InfoBox>
+                    </VBorderedPanel>
                 </VBorderedPanel>
-            </VBorderedPanel>
-            <Keypad/>
-        </HStack>
-        <rt:Slider Value="25"/>
-        <rt:Slider Value="50"/>
-        <rt:Slider Value="75"/>
-        <rt:TextureRect Name="TextureR"/>
+                <Keypad/>
+            </HStack>
+            
+            <InputLabel Text="Oklab/Oklch colorspace strip"/>
+            <RichText Text="Oklab provides a dramatically more uniform lightness value than HSV/HSL."/>
+            <HBar/>
+            <rt:TextureRect Name="TextureR" HorizontalAlignment="Center"/>
 
-        <BackbufferControl Name="Backbuffer">
-            <OrbitalContainer MinSize="300 300" OrbitDistance="100" PlacementMode="Even">
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
+            <InputLabel Text="Backbuffer effects (shaders)"/>
+            <RichText Text="Can be used for fancy effects like scanlines, shattered displays, etc."/>
+            <HBar/>
+            <BackbufferControl Name="Backbuffer">
+                <OrbitalContainer MinSize="300 300" OrbitDistance="100" PlacementMode="Even">
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                </OrbitalContainer>
+                <OrbitalContainer MinSize="300 300" OrbitDistance="50" PlacementMode="Even">
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                    <Button SetSize="30 30" Margin="12 12"/>
+                </OrbitalContainer>
+                <rt:Control MinSize="300 300">
+                    <Button SetSize="30 30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </rt:Control>
+            </BackbufferControl>
+        </VGrowStack>
+        <VBar/>
+        <VGrowStack MaxWidth="300">
+            <InputLabel Text="OrbitalControl"/>
+            <RichText Text="Useful for radials and fancy placement. Supports a manual mode for direct control, with element placement being directly settable with an attached property. Debug circle enabled below for demonstration"/>
+            <HBar/>
+            <OrbitalContainer MinSize="200 200" OrbitDistance="80" PlacementMode="Even" DebugCircleColor="#DCD4C5">
+                <Button SetSize="30 30" Margin="12 12" Text="1"/>
+                <Button SetSize="30 30" Margin="12 12" Text="2"/>
+                <Button SetSize="30 30" Margin="12 12" Text="3"/>
+                <Button SetSize="30 30" Margin="12 12" Text="4"/>
+                <Button SetSize="30 30" Margin="12 12" Text="5"/>
+                <OrbitalContainer MinSize="80 80" OrbitDistance="30" PlacementMode="Even" DebugCircleColor="#BAAB99">
+                    <Button SetSize="30 30" Margin="12 12" Text="6"/>
+                    <Button SetSize="30 30" Margin="12 12" Text="7"/>
+                    <Button SetSize="30 30" Margin="12 12" Text="8"/>
+                </OrbitalContainer>
             </OrbitalContainer>
-            <OrbitalContainer MinSize="300 300" OrbitDistance="50" PlacementMode="Even">
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-                <Button SetSize="30 30" Margin="12 12"/>
-            </OrbitalContainer>
-            <rt:Control MinSize="300 300">
-                <Button SetSize="30 30" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </rt:Control>
-        </BackbufferControl>
-    </VGrowStack>
+        </VGrowStack>
+    </HGrowStack>
 </windows:ALZoo>

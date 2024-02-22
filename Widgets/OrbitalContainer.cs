@@ -4,6 +4,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.AL.UIKit.Annotations;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Animations;
@@ -67,6 +68,8 @@ public class OrbitalContainer : Container
     ///     The angle of the top of the control, as used by StackedClockwise and StackedCounterClockwise
     /// </summary>
     public Angle Top { get; set; } = Angle.FromWorldVec(-Vector2.UnitX);
+
+    public Color? DebugCircleColor { get; set; } = null;
     
     public enum SatellitePlacementMode
     {
@@ -222,6 +225,17 @@ public class OrbitalContainer : Container
         }
         
         return finalSize;
+    }
+
+    protected override void Draw(DrawingHandleScreen handle)
+    {
+        if (DebugCircleColor is { } c)
+        {
+            handle.DrawCircle((PixelSize / 2), OrbitDistance, c);
+        }
+        
+        base.Draw(handle);
+        
     }
 
     protected float GetControlDiameter(Control r)
