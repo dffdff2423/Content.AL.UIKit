@@ -30,21 +30,21 @@ public class OrbitalContainer : Container
     [UsedByXAMLIL]
     public static Angle GetSatelliteAngle(Control c)
         => c.GetValue(SatelliteAngle);
-    
+
     /// <summary>
     /// For use in generated code by XAMLIL. Not for direct end user use, please use SetValue.
     /// </summary>
     [UsedByXAMLIL]
     public static void SetSatelliteAngle(Control c, Angle loc)
         => c.SetValue(SatelliteAngle, loc);
-    
+
     private static void Changed(Control c, AttachedPropertyChangedEventArgs<Angle> _)
     {
         if (c.Parent is not OrbitalContainer orbit)
         {
             return; // We can't really do anything with this yet.
         }
-        
+
         orbit.OnSatelliteUpdated(c);
     }
 
@@ -52,25 +52,37 @@ public class OrbitalContainer : Container
     ///     How far children orbit from the center of the control.
     /// </summary>
     [Animatable]
+    [ViewVariables]
     public float OrbitDistance { get; set; }
+
+    /// <summary>
+    ///     If not null, OrbitDistance will be set to <code>MathF.Log(LogarithmicDistanceScale, ChildCount - 1)</code> automatically.
+    /// </summary>
+    [ViewVariables]
+    public float? LogarithmicDistanceScale { get; set; }
+
     /// <summary>
     ///     The placement used when arranging children, if any.
     /// </summary>
-    public SatellitePlacementMode PlacementMode { get; set; }
+    [ViewVariables]
+    public SatellitePlacementMode PlacementMode { get; set; } = SatellitePlacementMode.Even;
 
     /// <summary>
     /// Whether or not the orbit should be the control's center or its corner.
     /// </summary>
     /// <remarks> Useful for placing radials directly on the screen, as it means you don't need to figure out their measured center.</remarks>
+    [ViewVariables]
     public bool CenterToControl { get; set; } = true;
 
     /// <summary>
     ///     The angle of the top of the control, as used by StackedClockwise and StackedCounterClockwise
     /// </summary>
+    [ViewVariables]
     public Angle Top { get; set; } = Angle.FromWorldVec(-Vector2.UnitX);
 
+    [ViewVariables]
     public Color? DebugCircleColor { get; set; } = null;
-    
+
     public enum SatellitePlacementMode
     {
         /// <summary>
@@ -115,6 +127,11 @@ public class OrbitalContainer : Container
     /// </summary>
     protected void RecalculateSatelliteAngles()
     {
+        if (LogarithmicDistanceScale is { } scale)
+        {
+            OrbitDistance = float.MaxNumber(MathF.Log(ChildCount, scale), 0.0f);
+        }
+
         switch (PlacementMode)
         {
             case SatellitePlacementMode.Manual:
@@ -127,7 +144,7 @@ public class OrbitalContainer : Container
             {
                 if (ChildCount == 0)
                     return;
-                
+
                 var lastAngle = Top; // up.
                 {
                     var first = Children.First();
@@ -159,7 +176,7 @@ public class OrbitalContainer : Container
         var theta = (float.Pi * 2) / ChildCount;
 
         var lastAngle = Angle.FromWorldVec(-Vector2.UnitX) - theta;
-        
+
 
         foreach (var c in Children)
         {
@@ -175,7 +192,7 @@ public class OrbitalContainer : Container
     protected List<(Control, UIBox2)> GetExpectedArrangement()
     {
         var list = new List<(Control, UIBox2)>();
-        
+
         foreach (var c in Children)
         {
             var center = GetControlCenter(c);
@@ -190,10 +207,10 @@ public class OrbitalContainer : Container
     {
         RecalculateSatelliteAngles();
 
-        return Vector2.Zero; // measure code sucks 
-        
+        return Vector2.Zero; // measure code sucks
+
         //TODO: this shit doesnt work
-        
+
         // Create a box enclosing all the arranged boxes.
         /*
         var topleft = Vector2.Zero;
@@ -202,7 +219,7 @@ public class OrbitalContainer : Container
         {
             if (Vector2.Distance(topleft, Vector2.Zero) < Vector2.Distance(box.TopLeft, Vector2.Zero))
                 topleft = box.TopLeft;
-            
+
             if (Vector2.Distance(bottomright, Vector2.Zero) < Vector2.Distance(box.BottomRight, Vector2.Zero))
                 bottomright = box.BottomRight;
         }
@@ -218,12 +235,12 @@ public class OrbitalContainer : Container
         var offs = finalSize / 2;
         if (CenterToControl == false)
             offs = Vector2.Zero;
-        
+
         foreach (var (c, box) in GetExpectedArrangement())
         {
             c.Arrange(box.Translated(offs));
         }
-        
+
         return finalSize;
     }
 
@@ -233,14 +250,14 @@ public class OrbitalContainer : Container
         {
             handle.DrawCircle((PixelSize / 2), OrbitDistance, c);
         }
-        
+
         base.Draw(handle);
-        
+
     }
 
     protected float GetControlDiameter(Control r)
     {
-        return float.Min(r.Size.X, r.Size.Y); 
+        return float.Min(r.Size.X, r.Size.Y);
     }
 
     protected Vector2 GetControlCenter(Control c)

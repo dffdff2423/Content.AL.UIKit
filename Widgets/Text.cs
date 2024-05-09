@@ -11,6 +11,5 @@ public class Text : Label
 {
     public Text()
     {
-        Margin = new Thickness(2);
     }
 }

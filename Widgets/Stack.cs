@@ -13,7 +13,6 @@ public abstract class Stack : BoxContainer
 {
     public Stack()
     {
-        Margin = new Thickness(4);
     }
 
     protected override void ChildAdded(Control newChild)

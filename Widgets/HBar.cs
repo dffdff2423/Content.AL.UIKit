@@ -34,7 +34,6 @@ public class HBar : PanelContainer, IDepthMeasure<BorderedPanel>
     {
         HorizontalAlignment = HAlignment.Stretch;
         HorizontalExpand = true;
-        Margin = new Thickness(4);
         VerticalAlignment = VAlignment.Center;
         VerticalExpand = false;
         MinHeight = 3;
@@ -59,7 +58,6 @@ public sealed class VBar : HBar
     {
         HorizontalAlignment = HAlignment.Center;
         HorizontalExpand = false;
-        Margin = new Thickness(4);
         VerticalAlignment = VAlignment.Stretch;
         VerticalExpand = true;
         MinWidth = 3;

@@ -14,7 +14,6 @@ public class BorderedPanel : PanelContainer, IDepthMeasure<BorderedPanel>, IBrig
 {
     public BorderedPanel()
     {
-        Margin = new Thickness(2);
     }
 
     protected override void StylePropertiesChanged()

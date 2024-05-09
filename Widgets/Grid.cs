@@ -11,7 +11,6 @@ public class Grid : GridContainer
 {
     public Grid()
     {
-        Margin = new(4);
     }
 }
 

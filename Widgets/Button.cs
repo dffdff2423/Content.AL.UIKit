@@ -61,7 +61,6 @@ public class Button : ContainerButton
     {
         IoCManager.InjectDependencies(this);
         HorizontalExpand = false;
-        Margin = new Thickness(2);
         AddStyleClass(StyleClassButton);
         TextWidget = new Text
         {

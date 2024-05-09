@@ -14,7 +14,6 @@ public sealed class RichText : RichTextLabel
 
     public RichText()
     {
-        Margin = new Thickness(2);
     }
 
     protected override void Parented(Control newParent)
