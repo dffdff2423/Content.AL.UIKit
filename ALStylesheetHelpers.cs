@@ -1,6 +1,7 @@
 ﻿// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+using System.Numerics;
 using Content.AL.UIKit.Misc;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
@@ -8,6 +9,7 @@ using static Robust.Client.UserInterface.StylesheetHelpers;
 
 namespace Content.AL.UIKit;
 
+[PublicAPI]
 public static class ALStylesheetHelpers
 {
     public static MutableSelectorElement E<T>()
@@ -93,6 +95,82 @@ public static class ALStylesheetHelpers
     {
         return new MutableSelectorNeighbour(selector, other, by, SelectorNeighbour.NeighbourDirection.Either);
     }
+
+    public static MutableSelector Margin(this MutableSelector selector, Thickness margin)
+    {
+        return selector.Prop(nameof(Control.Margin), margin);
+    }
+
+    public static MutableSelector Margin(this MutableSelector selector, float margin)
+    {
+        return selector.Margin(new Thickness(margin));
+    }
+
+    public static MutableSelector MinWidth(this MutableSelector selector, float width)
+    {
+        return selector.Prop(nameof(Control.MinWidth), width);
+    }
+
+    public static MutableSelector MinHeight(this MutableSelector selector, float height)
+    {
+        return selector.Prop(nameof(Control.MinHeight), height);
+    }
+
+    public static MutableSelector MinSize(this MutableSelector selector, Vector2 size)
+    {
+        return selector.MinWidth(size.X).MinHeight(size.Y);
+    }
+
+    public static MutableSelector MaxWidth(this MutableSelector selector, float width)
+    {
+        return selector.Prop(nameof(Control.MaxWidth), width);
+    }
+
+    public static MutableSelector MaxHeight(this MutableSelector selector, float height)
+    {
+        return selector.Prop(nameof(Control.MaxHeight), height);
+    }
+
+    public static MutableSelector MaxSize(this MutableSelector selector, Vector2 size)
+    {
+        return selector.MaxWidth(size.X).MaxHeight(size.Y);
+    }
+
+    public static MutableSelector SetWidth(this MutableSelector selector, float width)
+    {
+        return selector.Prop(nameof(Control.SetWidth), width);
+    }
+
+    public static MutableSelector SetHeight(this MutableSelector selector, float height)
+    {
+        return selector.Prop(nameof(Control.SetHeight), height);
+    }
+
+    public static MutableSelector SetSize(this MutableSelector selector, Vector2 size)
+    {
+        return selector.SetWidth(size.X).SetHeight(size.Y);
+    }
+
+    public static MutableSelector HorizontalExpand(this MutableSelector selector, bool val)
+    {
+        return selector.Prop(nameof(Control.HorizontalExpand), val);
+    }
+
+    public static MutableSelector VerticalExpand(this MutableSelector selector, bool val)
+    {
+        return selector.Prop(nameof(Control.VerticalExpand), val);
+    }
+
+    public static MutableSelector HorizontalAlignment(this MutableSelector selector, Control.HAlignment val)
+    {
+        return selector.Prop(nameof(Control.HorizontalExpand), val);
+    }
+
+    public static MutableSelector VerticalAlignment(this MutableSelector selector, Control.VAlignment  val)
+    {
+        return selector.Prop(nameof(Control.VerticalExpand), val);
+    }
+
 
     public static T AndIf<T>(this T inp, bool v, Func<T, T> fn)
     {
