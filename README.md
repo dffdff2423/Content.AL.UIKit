@@ -3,7 +3,7 @@
 
 A collection of tools, widgets, etc for styling RobustToolbox games. A bit opinionated (see: BaseStyle requiring you specify two five color palettes) but only in ways you can simply ignore if you want.
 
-**Last updated for RT version \[unreleased\]. May not work with newer builds!**<br/>
+**Last updated for RT version v221.1.1, may not work with newer builds!**<br/>
 **Project is not yet versioned! Use at your own risk.**
 
 ## Adding to your project
