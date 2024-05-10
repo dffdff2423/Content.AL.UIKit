@@ -21,7 +21,7 @@ public static class StyleBoxExtensions
             case StyleBoxTexture tex:
             {
                 var texture = tex.Texture!;
-                var pix = texture.GetPixel(texture.Width / 2, texture.Height / 2);
+                var pix = texture.GetPixel(texture.Width / 2, texture.Height / 2) * tex.Modulate;
                 return new OklabColor(pix).L;
             }
             case IBrightnessAware b:

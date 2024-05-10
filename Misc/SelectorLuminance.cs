@@ -2,7 +2,9 @@
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 using Content.AL.UIKit.Interfaces;
+using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
+using Robust.Client.UserInterface.Controls;
 
 namespace Content.AL.UIKit.Misc;
 
@@ -28,6 +30,11 @@ public sealed class SelectorLuminance : Selector
             while (parent is not null)
             {
                 parent = parent.Parent;
+                if (EngineControlCheck(parent) is { } lum)
+                {
+                    luminosity = lum;
+                    break;
+                }
                 if (parent is IBrightnessAware b)
                 {
                     luminosity = b.Luminance();
@@ -53,6 +60,18 @@ public sealed class SelectorLuminance : Selector
         return false;
     }
 
+    private float? EngineControlCheck(Control? c)
+    {
+        if (c is ContainerButton b)
+        {
+            if (b.TryGetStyleProperty<StyleBox>(ContainerButton.StylePropertyStyleBox, out var box))
+            {
+                return box.Luminance();
+            }
+        }
+
+        return null;
+    }
 
     public override StyleSpecificity CalculateSpecificity()
     {

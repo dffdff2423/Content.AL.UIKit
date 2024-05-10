@@ -14,15 +14,15 @@ public static class ColorExtensions
     public static Color WithLightness(this Color c, float lightness)
     {
         DebugTools.Assert(lightness is >= 0.0f and <= 1.0f);
-        
+
         var o = new OklabColor(c)
         {
             L = lightness
         };
-        
+
         return (Color) o;
     }
-    
+
     /// <summary>
     ///     Adjusts the hue of a color using the Oklab color space.
     /// </summary>
@@ -32,12 +32,12 @@ public static class ColorExtensions
         {
             H = hue,
         };
-        
+
         return (Color) o;
     }
-    
+
     /// <summary>
-    ///     Adjusts the hue of a color using the Oklab color space.
+    ///     Adjusts the chroma of a color using the Oklab color space.
     /// </summary>
     public static Color WithChroma(this Color c, float chroma)
     {
@@ -45,7 +45,23 @@ public static class ColorExtensions
         {
             C = chroma,
         };
-        
+
+        return (Color) o;
+    }
+
+    public static Color AdjustChroma(this Color c, float adjust)
+    {
+        var o = new OklabColor(c);
+        o.C += adjust;
+
+        return (Color) o;
+    }
+
+    public static Color MulChroma(this Color c, float adjust)
+    {
+        var o = new OklabColor(c);
+        o.C *= adjust;
+
         return (Color) o;
     }
 }

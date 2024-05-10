@@ -40,13 +40,13 @@ public abstract class BaseStyle
 
     #region Textures
     public Texture[] PanelBackgroundTextures;
-    public StyleBox[] PanelBackgrounds;
+    public StyleBoxTexture[] PanelBackgrounds;
     public Texture[] ButtonBackgroundTextures;
-    public StyleBox[] ButtonBackgrounds;
+    public StyleBoxTexture[] ButtonBackgrounds;
     public Texture[] ButtonPositiveBackgroundTextures;
-    public StyleBox[] ButtonPositiveBackgrounds;
+    public StyleBoxTexture[] ButtonPositiveBackgrounds;
     public Texture[] ButtonNegativeBackgroundTextures;
-    public StyleBox[] ButtonNegativeBackgrounds;
+    public StyleBoxTexture[] ButtonNegativeBackgrounds;
 
     public StyleBox[] PrimarySolidBackgrounds;
     public StyleBox[] SecondarySolidBackgrounds;
@@ -153,7 +153,7 @@ public abstract class BaseStyle
         return (tx.ToArray(), i);
     }
 
-    public (Texture[] textures, StyleBox[] boxes, int found) LoadIndefiniteNinePatchSet(string target, int margin)
+    public (Texture[] textures, StyleBoxTexture[] boxes, int found) LoadIndefiniteNinePatchSet(string target, int margin)
     {
         var (textures, found) = LoadIndefiniteTextureSet(target);
         return (textures, textures.ToPatchStyleBoxes(margin), found);
@@ -210,8 +210,9 @@ public static class StyleExtensions
 
     public static StyleBox Modulate(this StyleBoxTexture box, Color color)
     {
-        box.Modulate = color;
-        return box;
+        var n = new StyleBoxTexture(box);
+        n.Modulate = color;
+        return n;
     }
 
     public static StyleBox Modulate(this StyleBoxTexture box, string color)
@@ -233,13 +234,13 @@ public static class StyleExtensions
         return new StyleBoxScaled(box, amount);
     }
 
-    public static StyleBox[] ToPatchStyleBoxes(this Texture[] textures, int margin)
+    public static StyleBoxTexture[] ToPatchStyleBoxes(this Texture[] textures, int margin)
     {
         return textures.Select(x =>
         {
             var box = new StyleBoxTexture {Texture = x};
             box.SetPatchMargin(StyleBox.Margin.All, margin);
-            return (StyleBox) box;
+            return box;
         }).ToArray();
     }
 }

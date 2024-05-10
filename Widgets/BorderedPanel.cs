@@ -56,12 +56,6 @@ public sealed class VBorderedPanel : BorderedPanel
 {
     public readonly VStack Inner = new() {Margin = new Thickness(4)};
 
-    public Thickness InnerMargin
-    {
-        get => Inner.Margin;
-        set => Inner.Margin = value;
-    }
-
     public VBorderedPanel()
     {
         Margin = new Thickness(2);

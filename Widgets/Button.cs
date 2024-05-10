@@ -30,6 +30,7 @@ public class Button : ContainerButton
     protected override void StylePropertiesChanged()
     {
         base.StylePropertiesChanged();
+        TextWidget.ForceRunStyleUpdate();
         UpdateGroupAssignment();
     }
 
