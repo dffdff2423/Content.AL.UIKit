@@ -1,6 +1,7 @@
 ﻿// This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 // If a copy of the MPL was not distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
+using System.Numerics;
 using Content.AL.UIKit.Interfaces;
 using Robust.Client.Graphics;
 
@@ -28,13 +29,13 @@ public sealed class StyleBoxHSkew : StyleBox, IBrightnessAware
 
     protected override void DoDraw(DrawingHandleScreen handle, UIBox2 box, float uiScale)
     {
-        var skew = Matrix3.Identity;
+        var skew = Matrix3x2.Identity;
         skew[0, 1] = float.Tan(Skew);
 
 
         var oldXform = handle.GetTransform();
         var xform = oldXform;
-        skew.Multiply(xform);
+        skew *= xform;
         handle.SetTransform(skew);
 
         Base.Draw(handle, box, uiScale);

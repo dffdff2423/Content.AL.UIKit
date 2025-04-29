@@ -3,8 +3,6 @@
 
 using System.Numerics;
 using Content.AL.UIKit.Annotations;
-using Robust.Client.Animations;
-using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Animations;
@@ -108,24 +106,17 @@ public class PinboardContainer : Container
         return finalSize;
     }
 
-    protected override void Draw(DrawingHandleScreen handle)
-    {
-        base.Draw(handle);
-    }
-
     protected override void RenderChildOverride(ref ControlRenderArguments args, int childIndex, Vector2i pos)
     {
         var screen = args.Handle.DrawingHandleScreen;
         var oldXform = screen.GetTransform();
         var xform = oldXform;
-        var scale = Matrix3.CreateScale(Zoom, Zoom);
-        xform.Multiply(scale);
+        var scale = Matrix3x2.CreateScale(Zoom, Zoom);
+        xform *= scale;
         var posOffs = GlobalPixelPosition + (PixelSize / 2);
         var relPos = pos - posOffs;
-        pos = (Vector2i)scale.Transform(relPos) + posOffs;
+        pos = (Vector2i)Vector2.Transform(relPos, scale) + posOffs;
         screen.SetTransform(xform);
-        var ccxform = args.CoordinateTransform;
-        ccxform.Multiply(scale);
         base.RenderChildOverride(ref args, childIndex, pos);
         screen.SetTransform(oldXform);
     }

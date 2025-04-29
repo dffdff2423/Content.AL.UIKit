@@ -20,16 +20,16 @@ public class BackbufferControl : Control
     ///     Stylesheet property ID for backbuffer shaders.
     /// </summary>
     public const string BackbufferShader = "backbuffer-shader";
- 
+
     private IRenderTexture? _target = default;
-    
+
     /// <summary>
     ///     Scale to apply to the target's pixel size.
     /// </summary>
     public Vector2i TargetScale { get; set; } = Vector2i.One;
 
     private ShaderInstance? _shader = null;
-    
+
     /// <summary>
     ///     The shader currently being used, if any. Setting this will override the stylesheet provided shader if one exists.
     /// </summary>
@@ -42,7 +42,7 @@ public class BackbufferControl : Control
 
             if (!TryGetStyleProperty(BackbufferShader, out ShaderInstance? s))
                 return null;
-            
+
             return s;
         }
         set => _shader = value;
@@ -52,7 +52,7 @@ public class BackbufferControl : Control
     {
         IoCManager.InjectDependencies(this);
     }
-    
+
     protected override Vector2 ArrangeOverride(Vector2 finalSize)
     {
         if (finalSize.X < 4 || finalSize.Y < 4)
@@ -76,7 +76,7 @@ public class BackbufferControl : Control
     {
         if (_target is null)
             return; // Nope.
-        
+
         var screen = args.Handle.DrawingHandleScreen;
         args.ScissorBox = null; // Can't scissor here.
         var captured = new RenderArguments(ref args);
@@ -102,7 +102,7 @@ public class BackbufferControl : Control
         if (_target is null)
             return;
         var screen = args.Handle.DrawingHandleScreen;
-        
+
         screen.UseShader(Shader);
         screen.DrawTextureRect(_target.Texture, PixelSizeBox.Translated(GlobalPixelPosition));
         screen.UseShader(null);
@@ -116,7 +116,7 @@ public class BackbufferControl : Control
         public Vector2i Position;
         public Color Modulate;
         public UIBox2i? ScissorBox;
-        public Matrix3 CoordinateTransform;
+        public Matrix3x2 CoordinateTransform;
         public RenderArguments(ref ControlRenderArguments args)
         {
             Handle = args.Handle;
@@ -126,6 +126,6 @@ public class BackbufferControl : Control
             ScissorBox = args.ScissorBox;
             CoordinateTransform = args.CoordinateTransform;
         }
-        
+
     }
 }
